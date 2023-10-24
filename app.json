@@ -1,0 +1,7 @@
+{
+  "name": "Mosque Screens",
+  "description": "An information screen built for mosques.",
+  "repository": "https://github.com/DilwoarH/Mosque-Screen",
+  "logo": "https://raw.githubusercontent.com/DilwoarH/Mosque-Screen/master/branding/icon-only-logo.png",
+  "keywords": ["charity", "information", "screen", "elm", "reactjs", "mosques"]
+}

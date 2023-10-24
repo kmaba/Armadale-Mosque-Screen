@@ -1,0 +1,15 @@
+{
+  "buildNumber": "v8.0.0",
+  "sliderMode": "slider",
+  "slideTimeout": 8000,
+  "googleSlides": {
+    "url": "https://docs.google.com/presentation/d/e/2PACX-1vSSB03g_s9gl75eiKZJPtfa2czRlBorDVFpYFbMOPqGEGD-06jxJP3wRRfNzeWCkGcKmE81U1OtvTkZ/embed?start=true&loop=false&delayms=8000",
+    "numberOfSlides": 5
+  },
+  "googleSheets": {
+    "prayerData": "https://spreadsheets.google.com/feeds/cells/YOURGOOGLESHEETCODE/SHEETPAGENUMBER/public/full?alt=json",
+    "hadithData": "https://spreadsheets.google.com/feeds/cells/YOURGOOGLESHEETCODE/SHEETPAGENUMBER/public/full?alt=json",
+    "appConfig": "https://spreadsheets.google.com/feeds/cells/YOURGOOGLESHEETCODE/SHEETPAGENUMBER/public/full?alt=json",
+    "refreshRate": 1
+  }
+}
