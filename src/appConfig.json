@@ -11,7 +11,7 @@
     "sliderMode": "slider",
     "sliderTimeout": "8000",
     "Text_Donate_Message": "<p class='top'><i>You can donate by going to</i></p>\n<p class='middle'>v.gd/AMICDonate</p>\n<p class='bottom'><i>any donation counts!</i></p>",
-    "Alternative_Donate_Message": "<p><i>You can donate by</i></p>\n<p><i>contactless</i></p>\n<p><i>cards and phones</i></p>",
+    "Alternative_Donate_Message": "<p><i>You can donate by</i></p>\n<p><i>contactless</i></p>\n<p><i>cards and phones and cash</i></p>",
     "Mobile_Use_Notification": "<p><i>Please ensure your</i></p>\n<p><i>mobile phone is silent</i></p>\n<p><i>in the prayer hall</i></p>",
     "SingleView_Message": "<p><i>Please ensure your</i></p>\n<p><i>mobile phone is silent</i></p>\n<p><i>in the prayer hall</i></p>",
     "Jummah_slot_1_label": "Khutbah",
