@@ -14,7 +14,7 @@ export default class HadithOfTheDay extends Component {
     return (
       <div className="HadithOfTheDayWrapper">
         <div className="HadithOfTheDayTitle">
-          <h1>Hadith of the day</h1>
+          <h1>Message of the day</h1>
         </div>
 
         <blockquote className="blockquote">
