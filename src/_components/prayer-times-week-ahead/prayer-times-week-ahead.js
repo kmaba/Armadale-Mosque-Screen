@@ -24,9 +24,6 @@ class PrayerTimesWeekAhead extends Component {
     var numrows = 7;
 
     for (var i = 1; i <= numrows; i++) {
-      // note: we add a key prop here to allow react to uniquely identify each
-      // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-
       var times = this.getPrayerTimes(i);
       var date = moment(
         `${times['day']}/${times['month']}/${moment().format('YYYY')}`,
@@ -90,7 +87,7 @@ class PrayerTimesWeekAhead extends Component {
               <td>Jama'ah</td>
 
               {/* ASR */}
-              <td>Mithl 1</td>
+              <td>Begins</td>
               <td>Jama'ah</td>
 
               {/* MAGHRIB */}
