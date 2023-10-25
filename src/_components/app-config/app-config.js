@@ -50,7 +50,7 @@ class AppConfig {
   updateData() {
     var lastUpdatedDiff = moment().unix() - parseInt(this.getLastUpdatedTime());
     if (
-      lastUpdatedDiff > config.googleSheets.refreshRate * 60 ||
+      lastUpdatedDiff > config.googleSheets.refreshRate * 60||
       !this.getAppConfig()
     ) {
       this.getAppConfigFromGoogleSheets();
