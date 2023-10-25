@@ -16,47 +16,18 @@ class PrayerTimes extends Component {
   }
 
   getAsrRows() {
-    if (
-      this.state.prayerTimes['asr_1_begins'] &&
-      !this.state.prayerTimes['asr_2_begins']
-    ) {
-      return (
-        <tr>
-          <th>Asr</th>
-          <td />
-          <td>{this.state.prayerTimes['asr_1_begins']}</td>
-          <td>{this.state.prayerTimes['asr_jamaah']}</td>
-        </tr>
-      );
-    } else if (
-      this.state.prayerTimes['asr_2_begins'] &&
-      !this.state.prayerTimes['asr_1_begins']
-    ) {
-      return (
-        <tr>
-          <th>Asr</th>
-          <td />
-          <td>{this.state.prayerTimes['asr_2_begins']}</td>
-          <td>{this.state.prayerTimes['asr_jamaah']}</td>
-        </tr>
-      );
-    } else {
-      return [
-        <tr key="asr1">
-          <th rowSpan="2">'Asr</th>
-          <td className="mithl-text">mithl 1</td>
-          <td>{this.state.prayerTimes['asr_1_begins']}</td>
-          <td rowSpan="2">{this.state.prayerTimes['asr_jamaah']}</td>
-        </tr>,
-        <tr key="asr2">
-          <td className="mithl-text">mithl 2</td>
-          <td className="normal-text">
-            {this.state.prayerTimes['asr_2_begins']}
-          </td>
-        </tr>
-      ];
-    }
+    const asr1Begins = this.state.prayerTimes['asr_1_begins'];
+    const asrJamah = this.state.prayerTimes['asr_jamaah'];
+    
+    return (
+          <tr>
+              <th>Asr</th>
+              <td colSpan="2">{asr1Begins}</td>
+              <td colpan="2">{asrJamah}</td>
+            </tr>
+    );
   }
+  
 
   render() {
     if (!this.state.prayerTimes)

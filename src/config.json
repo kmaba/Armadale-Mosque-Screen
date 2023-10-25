@@ -1,5 +1,5 @@
 {
-  "buildNumber": "v8.0.0",
+  "buildNumber": "AMIC",
   "sliderMode": "slider",
   "slideTimeout": 8000,
   "googleSlides": {
@@ -7,9 +7,9 @@
     "numberOfSlides": 5
   },
   "googleSheets": {
-    "prayerData": "https://api.mosque.tech/prayer-times/1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
-    "hadithData": "https://api.mosque.tech/hadith-data/1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
-    "appConfig": "https://api.mosque.tech/prayer-screen-config/1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
+    "prayerData": "https://script.google.com/macros/s/AKfycbzG1PEjY3Gopuw9G59oNY2XYeKyZanQcXqYCXgw6Xo3mk5yqrE/exec?google_sheet_id=1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
+    "hadithData": "https://script.google.com/macros/s/AKfycby6jZBf7sKGLte5mdxbqeENeRfZsX_XZqntI-6n8-9Z3-8mYUio/exec?google_sheet_id=1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
+    "appConfig": "https://script.google.com/macros/s/AKfycbxAG6RD-hfL-HzZ_YMBeiXa4mnkJBpt1QhrJmvHIU18KUUxPuU/exec?google_sheet_id=1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
     "refreshRate": 1
   }
 }
