@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/Mosque-Screens/Mosque-Screen/raw/master/branding/logo-full.png" alt="Mosque Screen Logo" />
+  <img src="https://github.com/kmaba/Armadale-Mosque-Screen/blob/main/branding/Logo-White.png?raw=true" alt="Amic Logo" />
 </p>
 <hr>
-A Mosque Screen made for the Armadale Mosque
+A mosque Screen made for AMIC
