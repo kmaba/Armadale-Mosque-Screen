@@ -29,19 +29,30 @@ class SunriseAndZawwal extends Component {
         console.error('Error fetching sunrise time:', error);
         this.setState({ sunrise: 'Error' });
       });
-
-    // Extract "solar_noon" time and calculate Zawwal
-    const solarNoonTime = '12:01:53 PM'; // Extracted from the API response
-
-    // Use moment.js to handle different time formats
-    const solarNoonMoment = moment(solarNoonTime, 'h:mm:ss A');
-    if (solarNoonMoment.isValid()) {
-      const zawwalMoment = solarNoonMoment.clone().add(10, 'minutes');
-      this.setState({ zawwal: zawwalMoment.format('h:mm:ss A') });
-    } else {
-      this.setState({ zawwal: 'Invalid Time' });
-    }
+  
+    // Fetch solar noon time
+    const zawwalApiUrl = 'https://api.sunrisesunset.io/json?lat=-31.950527&lng=115.860457'; // Perth's latitude and longitude
+    axios.get(zawwalApiUrl)
+      .then(response => {
+        const data = response.data.results;
+        const solarNoonTime = data.solar_noon;
+        this.setState({ zawwal: solarNoonTime });
+  
+        // Use moment.js to handle different time formats
+        const solarNoonMoment = moment(solarNoonTime, 'h:mm:ss A');
+        if (solarNoonMoment.isValid()) {
+          const zawwalMoment = solarNoonMoment.clone().add(10, 'minutes');
+          this.setState({ zawwal: zawwalMoment.format('h:mm:ss A') });
+        } else {
+          this.setState({ zawwal: 'Invalid Time' });
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching solar noon time:', error);
+        this.setState({ zawwal: 'Error' });
+      });
   }
+  
 
   render() {
     return (

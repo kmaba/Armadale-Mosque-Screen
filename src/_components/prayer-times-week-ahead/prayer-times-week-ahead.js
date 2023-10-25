@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import './prayer-times-week-ahead.css';
 import PrayerData from '../prayer-data/prayer-data';
+import axios from 'axios';
 
 class PrayerTimesWeekAhead extends Component {
   constructor(props) {
@@ -19,68 +20,70 @@ class PrayerTimesWeekAhead extends Component {
     return _data.getPrayerTimes(date);
   }
 
-  getNext7daysTableRows() {
-    var rows = [];
-    var numrows = 7;
+  componentDidMount() {
+    this.fetchPrayerTimes();
+  }
 
-    for (var i = 1; i <= numrows; i++) {
-      var times = this.getPrayerTimes(i);
-      var date = moment(
-        `${times['day']}/${times['month']}/${moment().format('YYYY')}`,
-        'DD/MM/YYYY'
-      ).format('ddd D MMM');
-      rows.push(
-        <tr key={i} className="PrayerTimesWeekAhead-row">
-          <td>{date}</td>
-          {/* FAJR */}
-          <td>{times['fajr_begins']}</td>
-          <td>{times['fajr_jamaah']}</td>
-          <td>{times['sunrise']}</td>
+  fetchPrayerTimes() {
+    const city = "Perth";
 
-          {/* ZUHR */}
-          <td>{times['zuhr_begins']}</td>
-          <td>{times['zuhr_jamaah']}</td>
+    // Get the current year and month
+    const currentYear = moment().year();
+    const currentMonth = moment().month() + 1;
 
-          {/* ASR */}
-          <td>{times['asr_1_begins']}</td>
-          <td>{times['asr_jamaah']}</td>
-
-          {/* MAGHRIB */}
-          <td>{times['maghrib_begins']}</td>
-          <td>{times['maghrib_jamaah']}</td>
-
-          {/* ISHA */}
-          <td>{times['isha_begins']}</td>
-          <td>{times['isha_jamaah']}</td>
-        </tr>
-      );
-    }
-
-    return rows;
+    // Fetch prayer times from the Aladhan API
+    axios
+      .get(
+        `http://api.aladhan.com/v1/calendarByCity?city=${city}&country=Australia&method=2&month=${currentMonth}&year=${currentYear}`
+      )
+      .then((response) => {
+        const data = response.data.data.slice(0, 7); // Limit to 7 days
+        this.setState({ prayerTimes: data });
+      })
+      .catch((error) => {
+        console.error('Error fetching prayer times:', error);
+      });
   }
 
   render() {
-    var rows = this.getNext7daysTableRows();
+    const rows = this.state.prayerTimes.map((day, index) => {
+      const date = moment(day.date.readable, 'DD MMMM YYYY').format('ddd D MMM');
+      return (
+        <tr key={index} className="PrayerTimesWeekAhead-row">
+          <td>{index === 0 ? moment().format('ddd D MMM') : date}</td>
+          <td>{day.timings.Fajr.replace(' (AWST)', '')}</td>
+          <td>{times['fajr_jamaah']}</td>
+          <td>{day.timings.Dhuhr.replace(' (AWST)', '')}</td>
+          <td>{times['zuhr_jamaah']}</td>
+          <td>{day.timings.Asr.replace(' (AWST)', '')}</td>
+          <td>{times['asr_jamaah']}</td>
+          <td>{day.timings.Maghrib.replace(' (AWST)', '')}</td>
+          <td>{times['maghrib_jamaah']}</td>
+          <td>{day.timings.Isha.replace(' (AWST)', '')}</td>
+          <td>{times['isha_jamaah']}</td>
+        </tr>
+      );
+    });
+
     return (
       <div className="PrayerTimesWeekAheadWrapper">
         <table className="PrayerTimesWeekAhead">
           <thead>
             <tr>
-              <th>Week ahead</th>
+            <th>Week ahead</th>
               <th colSpan="3">Fajr</th>
               <th colSpan="2">Zuhr</th>
-              <th colSpan="3">Asr</th>
+              <th colSpan="2">Asr</th>
               <th colSpan="2">Maghrib</th>
               <th colSpan="2">Isha</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td />
+            <td />
               {/* FAJR */}
               <td>Begins</td>
               <td>Jama'ah</td>
-              <td>Sunrise</td>
 
               {/* ZUHR */}
               <td>Begins</td>
