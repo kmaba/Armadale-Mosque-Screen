@@ -27,7 +27,7 @@ class AppConfig {
     }
 
     return axios
-      .get(`${spreadsheetUrl}&_cacheBust=${Math.random()}`)
+      .get(`${spreadsheetUrl}`)
       .then(json => {
         this.storeAppConfig(json.data);
       });

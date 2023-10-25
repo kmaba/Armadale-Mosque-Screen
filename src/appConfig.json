@@ -9,7 +9,7 @@
     "clock_background_colour": "#cef9ff",
     "time_format": "h:mm:ss A",
     "sliderMode": "slider",
-    "sliderTimeout": "8000",
+    "sliderTimeout": "2000",
     "Text_Donate_Message": "<p class='top'><i>You can donate by going to</i></p>\n<p class='middle'>v.gd/AMICDonate</p>\n<p class='bottom'><i>any donation counts!</i></p>",
     "Alternative_Donate_Message": "<p><i>You can donate by</i></p>\n<p><i>contactless</i></p>\n<p><i>cards and phones</i></p>",
     "Mobile_Use_Notification": "<p><i>Please ensure your</i></p>\n<p><i>mobile phone is silent</i></p>\n<p><i>in the prayer hall</i></p>",
