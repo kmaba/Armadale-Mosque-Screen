@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import View2 from './View2';
+import View6 from './View6';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<View2 />, div);
+  ReactDOM.render(<View6 />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

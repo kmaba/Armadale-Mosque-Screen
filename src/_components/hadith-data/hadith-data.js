@@ -10,7 +10,7 @@ export default class HadithData {
   getHadithSpreadsheetUrl() {
     return (
       process.env.REACT_APP_HADITH_DATA_SPREADSHEET_URL ||
-      config.googleSheets.hadithData
+      config.configJsons.hadithData
     );
   }
 
@@ -101,7 +101,7 @@ export default class HadithData {
     var lastHadithUpdateDiff = moment().unix() - this.getLastUpdatedTime();
     var alreadyHasHadithData = this.getAllHadithData() ? true : false;
     if (
-      lastHadithUpdateDiff > config.googleSheets.refreshRate * 60 ||
+      lastHadithUpdateDiff > config.configJsons.refreshRate * 60 ||
       !alreadyHasHadithData
     ) {
       this.getHadithFromGoogleSheets();

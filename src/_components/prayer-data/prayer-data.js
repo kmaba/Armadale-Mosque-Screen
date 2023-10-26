@@ -20,7 +20,7 @@ class PrayerData {
   getSpeadsheetUrl() {
     return process.env.REACT_APP_PRAYER_DATA_SPREADSHEET_URL
       ? process.env.REACT_APP_PRAYER_DATA_SPREADSHEET_URL
-      : config.googleSheets.prayerData;
+      : config.configJsons.prayerData;
   }
 
   getPrayerTimesFromGoogleSheets() {
@@ -55,7 +55,7 @@ class PrayerData {
     var lastUpdatedDiff = moment().unix() - parseInt(this.getLastUpdatedTime());
     var alreadyHasPrayerData = this.getPrayerData() ? true : false;
     if (
-      lastUpdatedDiff > config.googleSheets.refreshRate * 60 ||
+      lastUpdatedDiff > config.configJsons.refreshRate * 60 ||
       !alreadyHasPrayerData
     ) {
       this.getPrayerTimesFromGoogleSheets().then(() => {

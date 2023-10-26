@@ -16,10 +16,10 @@ class AppConfig {
   getSpeadsheetUrl() {
     return process.env.REACT_APP_APP_CONFIG_SPREADSHEET_URL
       ? process.env.REACT_APP_APP_CONFIG_SPREADSHEET_URL
-      : config.googleSheets.appConfig;
+      : config.configJsons.appConfig;
   }
 
-  getAppConfigFromGoogleSheets() {
+  getAppConfigFromConfigJsons() {
     var spreadsheetUrl = this.getSpeadsheetUrl();
 
     if (!spreadsheetUrl) {
@@ -50,10 +50,10 @@ class AppConfig {
   updateData() {
     var lastUpdatedDiff = moment().unix() - parseInt(this.getLastUpdatedTime());
     if (
-      lastUpdatedDiff > config.googleSheets.refreshRate * 60||
+      lastUpdatedDiff > config.configJsons.refreshRate * 60||
       !this.getAppConfig()
     ) {
-      this.getAppConfigFromGoogleSheets();
+      this.getAppConfigFromConfigJsons();
       console.info('Updating App Config....');
     }
   }

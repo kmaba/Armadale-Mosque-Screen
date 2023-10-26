@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import './View5.css';
+import './View7.css';
 import Logo from '../../_components/logo/logo';
 import Clock from '../../_components/clock/clock';
 import BuildNumber from '../../_components/build-number/build-number';
-import PrayerTimesWeekAhead from '../../_components/prayer-times-week-ahead/prayer-times-week-ahead';
 import Branding from '../../_components/branding/branding';
+import HadithOfTheDay from '../../_components/hadith-of-the-day/hadith-of-the-day';
 
-class View4 extends Component {
+class View6 extends Component {
   render() {
     return (
-      <div className="View4">
+      <div className="View6">
         <div className="row">
           <Logo />
         </div>
@@ -18,10 +18,10 @@ class View4 extends Component {
             <div className="row">
               <Clock />
             </div>
-            <div className="row">
-              <PrayerTimesWeekAhead />
-            </div>
           </div>
+        </div>
+        <div className="row">
+          <HadithOfTheDay />
         </div>
         <BuildNumber />
         <Branding />
@@ -30,4 +30,4 @@ class View4 extends Component {
   }
 }
 
-export default View4;
+export default View6;
