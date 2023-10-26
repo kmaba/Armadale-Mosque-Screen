@@ -1,15 +1,10 @@
 {
-    "name": "Mosque Screen",
-    "short_name": "Mosque Screen",
+    "name": "Armadale Mosque Screen",
+    "short_name": "AMIC Screen",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/android-chrome-256x256.png",
-            "sizes": "256x256",
+            "src": "../../branding/Logo-White-300x-Square.png",
+            "sizes": "300x300",
             "type": "image/png"
         }
     ],
