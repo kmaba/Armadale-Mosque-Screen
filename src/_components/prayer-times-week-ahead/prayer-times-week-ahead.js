@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import './prayer-times-week-ahead.css';
 import axios from 'axios';
+import PrayerData from '../prayer-data/prayer-data';
 
 class PrayerTimesWeekAhead extends Component {
   constructor(props) {
@@ -18,14 +19,16 @@ class PrayerTimesWeekAhead extends Component {
   fetchPrayerTimes() {
     const city = "Perth";
 
-    // Get the current year and month
-    const currentYear = moment().year();
-    const currentMonth = moment().month() + 1;
+    // Get the current year, month, and day
+    const currentDate = moment();
+    const currentYear = currentDate.year();
+    const currentMonth = currentDate.month() + 1;
+    const currentDay = currentDate.date();
 
-    // Fetch prayer times from the Aladhan API
+    // Fetch prayer times from the Aladhan API starting from the current date
     axios
       .get(
-        `http://api.aladhan.com/v1/calendarByCity?city=${city}&country=Australia&method=2&month=${currentMonth}&year=${currentYear}`
+        `http://api.aladhan.com/v1/calendarByCity?city=${city}&country=Australia&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
       )
       .then((response) => {
         const data = response.data.data.slice(0, 7); // Limit to 7 days
@@ -36,18 +39,38 @@ class PrayerTimesWeekAhead extends Component {
       });
   }
 
-  render() {
-    const rows = this.state.prayerTimes.map((day, index) => {
-      const date = moment(day.date.readable, 'DD MMMM YYYY').format('ddd D MMM');
+  getPrayerTimes(additional_days = 0) {
+    const currentDate = moment();
+    const targetDate = currentDate.clone().add(additional_days, 'days');
+    const prayerData = new PrayerData();
+    const jamahTimes = prayerData.getPrayerTimes(targetDate.format('DD/MM/YYYY'));
 
+    return jamahTimes;
+  }
+
+  render() {
+    const currentDate = moment();
+    const rows = this.state.prayerTimes.map((day, index) => {
+      const date = currentDate.clone().add(index, 'days').format('ddd D MMM');
+      const prayerData = this.getPrayerTimes(index);
+      const FajrBegins = day.timings.Fajr.replace(' (AWST)', '')
+      const DhuhrBegins = day.timings.Dhuhr.replace(' (AWST)', '')
+      const AsrBegins = day.timings.Asr.replace(' (AWST)', '')
+      const MaghribBegins = day.timings.Maghrib.replace(' (AWST)', '')
+      const IshaBegins = day.timings.Isha.replace(' (AWST)', '')
       return (
         <tr key={index} className="PrayerTimesWeekAhead-row">
-          <td>{index === 0 ? moment().format('ddd D MMM') : date}</td>
-          <td>{day.timings.Fajr.replace(' (AWST)', '')}</td>
-          <td>{day.timings.Dhuhr.replace(' (AWST)', '')}</td>
-          <td>{day.timings.Asr.replace(' (AWST)', '')}</td>
-          <td>{day.timings.Maghrib.replace(' (AWST)', '')}</td>
-          <td>{day.timings.Isha.replace(' (AWST)', '')}</td>
+          <td>{date}</td>
+          <td>{moment(FajrBegins, 'HH:mm').format('h:mm')}</td>
+          <td>{prayerData.fajr_jamaah}</td>
+          <td>{moment(DhuhrBegins, 'HH:mm').format('h:mm')}</td>
+          <td>{prayerData.zuhr_jamaah}</td>
+          <td>{moment(AsrBegins, 'HH:mm').format('h:mm')}</td>
+          <td>{prayerData.asr_jamaah}</td>
+          <td>{moment(MaghribBegins, 'HH:mm').format('h:mm')}</td>
+          <td>{prayerData.maghrib_jamaah}</td>
+          <td>{moment(IshaBegins, 'HH:mm').format('h:mm')}</td>
+          <td>{prayerData.isha_jamaah}</td>
         </tr>
       );
     });
@@ -57,8 +80,8 @@ class PrayerTimesWeekAhead extends Component {
         <table className="PrayerTimesWeekAhead">
           <thead>
             <tr>
-            <th>Week ahead</th>
-              <th colSpan="3">Fajr</th>
+              <th>Week ahead</th>
+              <th colSpan="2">Fajr</th>
               <th colSpan="2">Zuhr</th>
               <th colSpan="2">Asr</th>
               <th colSpan="2">Maghrib</th>
@@ -67,24 +90,15 @@ class PrayerTimesWeekAhead extends Component {
           </thead>
           <tbody>
             <tr>
-            <td />
-              {/* FAJR */}
+              <td />
               <td>Begins</td>
               <td>Jama'ah</td>
-
-              {/* ZUHR */}
               <td>Begins</td>
               <td>Jama'ah</td>
-
-              {/* ASR */}
               <td>Begins</td>
               <td>Jama'ah</td>
-
-              {/* MAGHRIB */}
               <td>Begins</td>
               <td>Jama'ah</td>
-
-              {/* ISHA */}
               <td>Begins</td>
               <td>Jama'ah</td>
             </tr>
