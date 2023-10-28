@@ -18,6 +18,7 @@ class PrayerTimesWeekAhead extends Component {
 
   fetchPrayerTimes() {
     const city = "Perth";
+    const country = "Australia";
 
     // Get the current year, month, and day
     const currentDate = moment();
@@ -28,7 +29,7 @@ class PrayerTimesWeekAhead extends Component {
     // Fetch prayer times from the Aladhan API starting from the current date
     axios
       .get(
-        `http://api.aladhan.com/v1/calendarByCity?city=${city}&country=Australia&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
+        `http://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
       )
       .then((response) => {
         const data = response.data.data.slice(0, 7); // Limit to 7 days
