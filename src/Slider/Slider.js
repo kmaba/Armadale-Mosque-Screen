@@ -39,7 +39,7 @@ class Slider extends Component {
 
   getInitialSlide() {
     return <View1 />;
-    // return [<View5 />];
+    // return [<View />];
   }
 
   getSingleView() {
@@ -48,7 +48,7 @@ class Slider extends Component {
 
   getSlides() {
     return [<View1 />, <View2 />, <View3 />, <View4 />, <View5 />, <View6 />, <View7 />];
-    // return [<View5 />];
+    // return [<View />];
   }
 
   next() {
