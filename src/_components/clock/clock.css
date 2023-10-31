@@ -4,12 +4,16 @@
   padding: 15px;
   background-color: white;
   font-weight: 900;
+  border-radius: 25px;
+  padding: 20px;
 }
 
 .Clock {
   font-size: 8em;
   min-height: 60px;
   color: 006b76;
+  height: 1em;
+  margin: 13px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -26,5 +30,266 @@
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
   .Clock {
     font-size: 5em;
+  }
+}
+
+.clock__digit {
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+[data-digit='0'] .clock__digit:nth-child(10) {
+  animation-name: digit9R;
+}
+[data-digit='0'] .clock__digit:nth-child(1) {
+  animation-name: digit0;
+}
+[data-digit='0']:nth-child(1) .clock__digit:nth-child(3) {
+  animation-name: digit2R;
+}
+[data-digit='0']:nth-child(2) .clock__digit:nth-child(4) {
+  animation-name: digit3R;
+}
+[data-digit='0']:nth-child(3) .clock__digit:nth-child(6),
+[data-digit='0']:nth-child(5) .clock__digit:nth-child(6) {
+  animation-name: digit5R;
+}
+[data-digit='0']:nth-child(1) + [data-digit='0'] .clock__digit:nth-child(10) {
+  visibility: hidden;
+}
+[data-digit='1'] .clock__digit:nth-child(1) {
+  animation-name: digit0R;
+}
+[data-digit='1'] .clock__digit:nth-child(2) {
+  animation-name: digit1;
+}
+[data-digit='2'] .clock__digit:nth-child(2) {
+  animation-name: digit1R;
+}
+[data-digit='2'] .clock__digit:nth-child(3) {
+  animation-name: digit2;
+}
+[data-digit='3'] .clock__digit:nth-child(3) {
+  animation-name: digit2R;
+}
+[data-digit='3'] .clock__digit:nth-child(4) {
+  animation-name: digit3;
+}
+[data-digit='4'] .clock__digit:nth-child(4) {
+  animation-name: digit3R;
+}
+[data-digit='4'] .clock__digit:nth-child(5) {
+  animation-name: digit4;
+}
+[data-digit='5'] .clock__digit:nth-child(5) {
+  animation-name: digit4R;
+}
+[data-digit='5'] .clock__digit:nth-child(6) {
+  animation-name: digit5;
+}
+[data-digit='6'] .clock__digit:nth-child(6) {
+  animation-name: digit5R;
+}
+[data-digit='6'] .clock__digit:nth-child(7) {
+  animation-name: digit6;
+}
+[data-digit='7'] .clock__digit:nth-child(7) {
+  animation-name: digit6R;
+}
+[data-digit='7'] .clock__digit:nth-child(8) {
+  animation-name: digit7;
+}
+[data-digit='8'] .clock__digit:nth-child(8) {
+  animation-name: digit7R;
+}
+[data-digit='8'] .clock__digit:nth-child(9) {
+  animation-name: digit8;
+}
+[data-digit='9'] .clock__digit:nth-child(9) {
+  animation-name: digit8R;
+}
+[data-digit='9'] .clock__digit:nth-child(10) {
+  animation-name: digit9;
+}
+
+/* Animations */
+@keyframes digit0 {
+  from,
+  50% {
+    stroke-dashoffset: 53;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit0R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -53;
+  }
+}
+@keyframes digit1 {
+  from,
+  50% {
+    stroke-dashoffset: 19;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit1R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -19;
+  }
+}
+@keyframes digit2 {
+  from,
+  50% {
+    stroke-dashoffset: 43;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit2R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -43;
+  }
+}
+@keyframes digit3 {
+  from,
+  50% {
+    stroke-dashoffset: 51;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit3R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -51;
+  }
+}
+@keyframes digit4 {
+  from,
+  50% {
+    stroke-dashoffset: 45;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit4R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -45;
+  }
+}
+@keyframes digit5 {
+  from,
+  50% {
+    stroke-dashoffset: 43;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit5R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -43;
+  }
+}
+@keyframes digit6 {
+  from,
+  50% {
+    stroke-dashoffset: 52;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit6R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -52;
+  }
+}
+@keyframes digit7 {
+  from,
+  50% {
+    stroke-dashoffset: 27;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit7R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -27;
+  }
+}
+@keyframes digit8 {
+  from,
+  50% {
+    stroke-dashoffset: 61;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit8R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -61;
+  }
+}
+@keyframes digit9 {
+  from,
+  50% {
+    stroke-dashoffset: 52;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes digit9R {
+  from {
+    stroke-dashoffset: 0;
+  }
+  50%,
+  to {
+    stroke-dashoffset: -52;
   }
 }
