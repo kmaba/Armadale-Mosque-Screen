@@ -31,7 +31,8 @@ class Slider extends Component {
         totalCount:
           config.googleSlides && config.googleSlides.numberOfSlides
             ? config.googleSlides.numberOfSlides
-            : 0
+            : 0,
+        blur: false
       }
     };
   }
@@ -67,17 +68,22 @@ class Slider extends Component {
   }
 
   nextSlide() {
-    var newSlidePosition = this.state.currentPosition + 1;
-    var isLastSlide = newSlidePosition >= this.state.slides.length;
+    this.setState({ blur: true }, () => {
+      var newSlidePosition = this.state.currentPosition + 1;
+      var isLastSlide = newSlidePosition >= this.state.slides.length;
 
-    if (isLastSlide) {
-      newSlidePosition = 0;
-    }
+      if (isLastSlide) {
+        newSlidePosition = 0;
+      }
 
-    this.setState(() => ({
-      currentSlide: this.state.slides[newSlidePosition],
-      currentPosition: newSlidePosition
-    }));
+      setTimeout(() => {
+        this.setState({
+          currentSlide: this.state.slides[newSlidePosition],
+          currentPosition: newSlidePosition,
+          blur: false
+        });
+      }, 300); // adjust as needed
+    });
   }
 
   showGoogleSlides() {
@@ -112,7 +118,11 @@ class Slider extends Component {
   }
 
   render() {
-    return this.state.currentSlide;
+    return (
+      <div className={`slide ${this.state.blur ? 'blur' : ''}`}>
+        {this.state.currentSlide}
+      </div>
+    );
   }
 }
 

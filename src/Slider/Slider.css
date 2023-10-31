@@ -1,0 +1,8 @@
+.slide {
+  transition: filter 0.3s ease-in-out;
+  filter: blur(0); /* Initial state - no blur */
+}
+
+.slide.blur {
+  filter: blur(7px); /* Apply Gaussian blur */
+}
