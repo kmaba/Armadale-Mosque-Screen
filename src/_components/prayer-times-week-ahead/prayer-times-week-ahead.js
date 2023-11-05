@@ -8,7 +8,7 @@ class PrayerTimesWeekAhead extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      prayerTimes: [],
+      prayerTimes: []
     };
   }
 
@@ -17,8 +17,8 @@ class PrayerTimesWeekAhead extends Component {
   }
 
   fetchPrayerTimes() {
-    const city = "Perth";
-    const country = "Australia";
+    const city = 'Perth';
+    const country = 'Australia';
 
     // Get the current year, month, and day
     const currentDate = moment();
@@ -31,11 +31,11 @@ class PrayerTimesWeekAhead extends Component {
       .get(
         `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
       )
-      .then((response) => {
+      .then(response => {
         const data = response.data.data.slice(0, 7); // Limit to 7 days
         this.setState({ prayerTimes: data });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Error fetching prayer times:', error);
       });
   }
@@ -44,7 +44,9 @@ class PrayerTimesWeekAhead extends Component {
     const currentDate = moment();
     const targetDate = currentDate.clone().add(additional_days, 'days');
     const prayerData = new PrayerData();
-    const jamahTimes = prayerData.getPrayerTimes(targetDate.format('DD/MM/YYYY'));
+    const jamahTimes = prayerData.getPrayerTimes(
+      targetDate.format('DD/MM/YYYY')
+    );
 
     return jamahTimes;
   }
@@ -52,13 +54,16 @@ class PrayerTimesWeekAhead extends Component {
   render() {
     const currentDate = moment();
     const rows = this.state.prayerTimes.map((day, index) => {
-      const date = currentDate.clone().add(index, 'days').format('ddd D MMM');
+      const date = currentDate
+        .clone()
+        .add(index, 'days')
+        .format('ddd D MMM');
       const prayerData = this.getPrayerTimes(index);
-      const FajrBegins = day.timings.Fajr.replace(' (AWST)', '')
-      const DhuhrBegins = day.timings.Dhuhr.replace(' (AWST)', '')
-      const AsrBegins = day.timings.Asr.replace(' (AWST)', '')
-      const MaghribBegins = day.timings.Maghrib.replace(' (AWST)', '')
-      const IshaBegins = day.timings.Isha.replace(' (AWST)', '')
+      const FajrBegins = day.timings.Fajr.replace(' (AWST)', '');
+      const DhuhrBegins = day.timings.Dhuhr.replace(' (AWST)', '');
+      const AsrBegins = day.timings.Asr.replace(' (AWST)', '');
+      const MaghribBegins = day.timings.Maghrib.replace(' (AWST)', '');
+      const IshaBegins = day.timings.Isha.replace(' (AWST)', '');
       return (
         <tr key={index} className="PrayerTimesWeekAhead-row">
           <td>{date}</td>
@@ -83,7 +88,7 @@ class PrayerTimesWeekAhead extends Component {
             <tr>
               <th>Week ahead</th>
               <th colSpan="2">Fajr</th>
-              <th colSpan="2">Zuhr</th>
+              <th colSpan="2">Dhuhr</th>
               <th colSpan="2">Asr</th>
               <th colSpan="2">Maghrib</th>
               <th colSpan="2">Isha</th>

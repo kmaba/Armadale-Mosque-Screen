@@ -23,13 +23,14 @@ class GoogleSlides extends Component {
 
   render() {
     return (
-      <div className="GoogleSlides">
+      <div className="GoogleSlides" style={{ width: '100vw', height: '100vh' }}>
         <iframe
           title="GoogleSlidesIframe"
           src={this.state.url}
           frameBorder="0"
-          width="1920px"
-          height="1109px"
+          border="0"
+          width="100%"
+          height="100%"
           allowFullScreen="true"
         />
       </div>

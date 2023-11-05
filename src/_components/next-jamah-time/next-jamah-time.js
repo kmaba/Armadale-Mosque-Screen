@@ -46,7 +46,7 @@ class NextJammahTime extends Component {
 
     if (this.stringToTime(`${currentDate['zuhr_jamaah']} PM`) > currentTime) {
       return {
-        name: 'Zuhr',
+        name: 'Dhuhr',
         time: `${currentDate['zuhr_jamaah']} PM`
       };
     }
