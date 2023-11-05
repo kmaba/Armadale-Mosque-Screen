@@ -87,7 +87,7 @@ class NextJammahTime extends Component {
         <table className="NextJammahTime">
           <thead>
             <tr>
-              <th>Next Jama'ah</th>
+              <th>Next Iqamah</th>
             </tr>
           </thead>
           <tbody>

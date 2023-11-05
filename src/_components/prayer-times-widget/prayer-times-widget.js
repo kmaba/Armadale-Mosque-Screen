@@ -96,7 +96,7 @@ class PrayerTimesWidget extends Component {
               <td>{this.state.prayerTimes['isha_begins']}</td>
             </tr>
             <tr>
-              <th>Jama'ah</th>
+              <th>Iqamah</th>
               <td>{this.state.prayerTimes['fajr_jamaah']}</td>
               <td>{this.state.prayerTimes['zuhr_jamaah']}</td>
               <td>{this.state.prayerTimes['asr_jamaah']}</td>

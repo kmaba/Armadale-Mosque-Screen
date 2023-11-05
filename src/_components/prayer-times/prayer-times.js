@@ -9,7 +9,7 @@ class PrayerTimes extends Component {
     super(props);
     this.state = {
       prayerTimes: [],
-      jamaahTimes: {},
+      jamaahTimes: {}
     };
   }
 
@@ -18,8 +18,8 @@ class PrayerTimes extends Component {
   }
 
   fetchPrayerTimes() {
-    const city = "Perth";
-    const country = "Australia";
+    const city = 'Perth';
+    const country = 'Australia';
 
     // Get the current year, month, and day
     const currentDate = moment();
@@ -32,22 +32,26 @@ class PrayerTimes extends Component {
       .get(
         `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
       )
-      .then((response) => {
+      .then(response => {
         let data = response.data.data[0].timings; // Get today's prayer times
 
         // Remove "(AWST)" and convert time format
         for (let key in data) {
-          data[key] = moment(data[key].replace(' (AWST)', ''), 'HH:mm').format('h:mm');
+          data[key] = moment(data[key].replace(' (AWST)', ''), 'HH:mm').format(
+            'h:mm'
+          );
         }
 
         this.setState({ prayerTimes: data });
 
         // Get jamaah times from prayer-data.js
         const prayerData = new PrayerData();
-        const jamaahTimes = prayerData.getPrayerTimes(currentDate.format('DD/MM/YYYY'));
+        const jamaahTimes = prayerData.getPrayerTimes(
+          currentDate.format('DD/MM/YYYY')
+        );
         this.setState({ jamaahTimes });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Error fetching prayer times:', error);
       });
   }
@@ -68,7 +72,7 @@ class PrayerTimes extends Component {
               <th />
               <th />
               <th>Begins</th>
-              <th>Jama'ah</th>
+              <th>Iqamah</th>
             </tr>
           </thead>
           <tbody>
