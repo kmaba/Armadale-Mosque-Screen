@@ -9,6 +9,11 @@
   transform: scale(1.01); /* Zoom in by 10% */
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
-  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
