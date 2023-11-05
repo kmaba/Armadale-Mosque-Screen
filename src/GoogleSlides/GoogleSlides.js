@@ -28,8 +28,8 @@ class GoogleSlides extends Component {
           title="GoogleSlidesIframe"
           src={this.state.url}
           frameBorder="0"
-          width="1868px"
-          height="1080px"
+          width="1920px"
+          height="1109px"
           allowFullScreen="true"
         />
       </div>

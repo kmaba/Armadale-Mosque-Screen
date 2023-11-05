@@ -1,8 +1,14 @@
 .slide {
-  transition: filter 0.3s ease-in-out;
+  transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
   filter: blur(0); /* Initial state - no blur */
+  transform: scale(1); /* Initial state - no zoom */
 }
 
 .slide.blur {
   filter: blur(7px); /* Apply Gaussian blur */
+  transform: scale(1.01); /* Zoom in by 10% */
+}
+
+body {
+  overflow: hidden;
 }

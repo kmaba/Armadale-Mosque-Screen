@@ -73,7 +73,8 @@ class Slider extends Component {
       var isLastSlide = newSlidePosition >= this.state.slides.length;
 
       if (isLastSlide) {
-        newSlidePosition = 0;
+        this.showGoogleSlides();
+        return;
       }
 
       setTimeout(() => {
@@ -88,7 +89,8 @@ class Slider extends Component {
 
   showGoogleSlides() {
     this.setState(() => ({
-      currentSlide: this.state.googleSlides.slide
+      currentSlide: this.state.googleSlides.slide,
+      blur: false // Turn off the blur
     }));
     this.stopInterval();
     var slideCount = 0;
@@ -96,7 +98,13 @@ class Slider extends Component {
       slideCount++;
       if (slideCount >= this.state.googleSlides.totalCount - 1) {
         clearInterval(_gSlideInterval);
-        this.startInterval();
+        this.setState({
+          // Reset the slider
+          currentSlide: this.getInitialSlide(),
+          currentPosition: 0,
+          blur: false
+        });
+        this.startInterval(); // Restart the interval
       }
     }, this.state.slideTimeout);
   }
