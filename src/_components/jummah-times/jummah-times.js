@@ -53,7 +53,7 @@ class JummahTimes extends Component {
           </thead>
           <tbody>
             <tr>
-              <td>Jumu‘ah</td>
+              <td>Jummah</td>
               <td>{this.getJummahTimes()['slot_1']}</td>
               <td>{this.getJummahTimes()['slot_2']}</td>
             </tr>
