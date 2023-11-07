@@ -73,6 +73,10 @@
     margin-left: 0;
     width: 100%;
     padding: 30px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-left: 0;
   }
 
   .PrayerTimes th:last-child {
