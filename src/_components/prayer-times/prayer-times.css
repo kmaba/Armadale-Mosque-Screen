@@ -59,14 +59,11 @@
     font-size: 1em;
     margin-left: 0;
     width: 100%;
-  }
-
-  .PrayerTimes th:last-child {
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2em;
+    margin-top: 10px;
     padding-left: 0;
-  }
-
-  .PrayerTimes td {
-    min-width: 10px;
   }
 }
 
