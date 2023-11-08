@@ -28,7 +28,6 @@ class PrayerTimes extends Component {
     const currentDay = currentDate.date();
 
     // Fetch prayer times from the Aladhan API starting from the current date
-    // Fetch prayer times from the Aladhan API starting from the current date
     axios
       .get(
         `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`

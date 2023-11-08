@@ -1,14 +1,49 @@
 import React, { Component } from 'react';
 import './next-jamah-time.css';
-import moment from 'moment/moment';
+import moment from 'moment';
+import axios from 'axios';
 import PrayerData from '../prayer-data/prayer-data';
 
 class NextJammahTime extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nextJammahTime: this.getNextJammahTime()
+      setMaghribTime: null,
+      nextJammahTime: null
     };
+  }
+
+  componentDidMount() {
+    this.fetchMagribTimes().then(() => {
+      this.setState({ nextJammahTime: this.getNextJammahTime() });
+    });
+  }
+
+  fetchMagribTimes() {
+    return new Promise((resolve, reject) => {
+      const city = 'Perth';
+      const country = 'Australia';
+      const currentDate = moment();
+      const currentYear = currentDate.year();
+      const currentMonth = currentDate.month() + 1;
+      const currentDay = currentDate.date();
+
+      axios
+        .get(
+          `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
+        )
+        .then(response => {
+          let data = response.data.data[0].timings;
+          const mTime = moment(data['Maghrib'].replace(' (AWST)', ''), 'HH:mm')
+            .add(10, 'minutes')
+            .format('h:mm A');
+          this.setState({ setMaghribTime: mTime }, resolve);
+        })
+        .catch(error => {
+          console.error('Error fetching prayer times:', error);
+          reject(error);
+        });
+    });
   }
 
   getTodaysPrayerTime() {
@@ -58,12 +93,10 @@ class NextJammahTime extends Component {
       };
     }
 
-    if (
-      this.stringToTime(`${currentDate['maghrib_jamaah']} PM`) > currentTime
-    ) {
+    if (this.stringToTime(`${this.state.setMaghribTime} PM`) > currentTime) {
       return {
         name: 'Maghrib',
-        time: `${currentDate['maghrib_jamaah']} PM`
+        time: `${this.state.setMaghribTime} PM`
       };
     }
 
@@ -82,6 +115,8 @@ class NextJammahTime extends Component {
   }
 
   render() {
+    const { nextJammahTime } = this.state;
+
     return (
       <div className="NextJammahTimeWrapper">
         <table className="NextJammahTime">
@@ -91,12 +126,16 @@ class NextJammahTime extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{this.state.nextJammahTime.name}</td>
-            </tr>
-            <tr>
-              <td>{this.state.nextJammahTime.time}</td>
-            </tr>
+            {nextJammahTime && (
+              <>
+                <tr>
+                  <td>{nextJammahTime.name}</td>
+                </tr>
+                <tr>
+                  <td>{nextJammahTime.time}</td>
+                </tr>
+              </>
+            )}
           </tbody>
         </table>
       </div>
