@@ -96,7 +96,7 @@ class NextJammahTime extends Component {
     if (this.stringToTime(`${this.state.setMaghribTime} PM`) > currentTime) {
       return {
         name: 'Maghrib',
-        time: `${this.state.setMaghribTime} PM`
+        time: `${this.state.setMaghribTime}`
       };
     }
 
