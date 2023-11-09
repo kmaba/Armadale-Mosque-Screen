@@ -1,6 +1,6 @@
 {
-  "name": "mosque-screen",
-  "version": "8.0.0",
+  "name": "armadale-mosque-screen",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "axios": "^1.5.1",
