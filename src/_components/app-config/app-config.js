@@ -1,4 +1,6 @@
 import moment from 'moment';
+import config from '../../config.json';
+import axios from 'axios';
 
 class AppConfig {
   constructor() {
@@ -12,9 +14,9 @@ class AppConfig {
   }
 
   getSpeadsheetUrl() {
-    return (
-      process.env.REACT_APP_APP_CONFIG_SPREADSHEET_URL || '../../appConfig.json'
-    ); // Adjust the path accordingly
+    return process.env.REACT_APP_APP_CONFIG_SPREADSHEET_URL
+      ? process.env.REACT_APP_APP_CONFIG_SPREADSHEET_URL
+      : config.configJsons.appConfig;
   }
 
   getAppConfigFromConfigJsons() {
@@ -24,14 +26,9 @@ class AppConfig {
       alert('REACT_APP_APP_CONFIG_SPREADSHEET_URL env not set');
     }
 
-    return fetch(spreadsheetUrl)
-      .then(response => response.json())
-      .then(data => {
-        this.storeAppConfig(data);
-      })
-      .catch(error => {
-        console.error('Error fetching appConfig:', error);
-      });
+    return axios.get(`${spreadsheetUrl}`).then(json => {
+      this.storeAppConfig(json.data);
+    });
   }
 
   storeAppConfig(_appConfig = []) {
@@ -51,7 +48,7 @@ class AppConfig {
   updateData() {
     var lastUpdatedDiff = moment().unix() - parseInt(this.getLastUpdatedTime());
     if (
-      lastUpdatedDiff > 1 * 60 || // assuming a default refresh rate of 1 minute
+      lastUpdatedDiff > config.configJsons.refreshRate * 60 ||
       !this.getAppConfig()
     ) {
       this.getAppConfigFromConfigJsons();
