@@ -4,4 +4,4 @@
 <hr>
 <a href="https://amic.pages.dev/">
 </a>
-<span align="center"> <h1>A mosque Screen made for AMIC</h1> </span>
+<span align="center"> <h1><b><i>A mosque Screen made for AMIC</i></b></h1> </span>
