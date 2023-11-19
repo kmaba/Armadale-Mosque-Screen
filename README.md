@@ -1,8 +1,8 @@
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https:////github.com/kmaba/Armadale-Mosque-Screen/blob/main/branding/Logo-Text.png?raw=true" />
-  <source media="(prefers-color-scheme: light)" srcset="https:////github.com/kmaba/Armadale-Mosque-Screen/blob/main/branding/Logo-Text-Black.png?raw=true" />
-  <img alt="AMIC Text Logo" src="https:////github.com/kmaba/Armadale-Mosque-Screen/blob/main/branding/Logo-Text.png?raw=true" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/kmaba/Armadale-Mosque-Screen/blob/main/branding/Logo-Text.png?raw=true" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/kmaba/Armadale-Mosque-Screen/blob/main/branding/Logo-Text-Black.png?raw=true" />
+  <img alt="AMIC Text Logo" src="https://github.com/kmaba/Armadale-Mosque-Screen/blob/main/branding/Logo-Text.png?raw=true" />
 </picture>
 </p>
 <hr>
