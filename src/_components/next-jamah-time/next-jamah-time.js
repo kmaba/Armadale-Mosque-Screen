@@ -30,10 +30,16 @@ class NextJammahTime extends Component {
 
       axios
         .get(
-          `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
+          `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=4&month=${currentMonth}&year=${currentYear}`
         )
         .then(response => {
-          let data = response.data.data[0].timings;
+          // Find today's data in the response
+          const todayData = response.data.data.find(
+            dayData =>
+              moment(dayData.date.readable, 'DD MMM YYYY').date() === currentDay
+          );
+
+          let data = todayData.timings;
           const mTime = moment(data['Maghrib'].replace(' (AWST)', ''), 'HH:mm')
             .add(10, 'minutes')
             .format('h:mm A');

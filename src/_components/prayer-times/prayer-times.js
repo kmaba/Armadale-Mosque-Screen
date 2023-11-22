@@ -30,10 +30,16 @@ class PrayerTimes extends Component {
     // Fetch prayer times from the Aladhan API starting from the current date
     axios
       .get(
-        `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
+        `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=4&month=${currentMonth}&year=${currentYear}`
       )
       .then(response => {
-        let data = response.data.data[0].timings; // Get today's prayer times
+        // Find today's data in the response
+        const todayData = response.data.data.find(
+          dayData =>
+            moment(dayData.date.readable, 'DD MMM YYYY').date() === currentDay
+        );
+
+        let data = todayData.timings; // Get today's prayer times
 
         // Remove "(AWST)" and convert time format
         for (let key in data) {

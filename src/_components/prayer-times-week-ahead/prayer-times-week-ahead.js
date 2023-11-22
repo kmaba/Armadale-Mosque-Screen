@@ -29,10 +29,16 @@ class PrayerTimesWeekAhead extends Component {
     // Fetch prayer times from the Aladhan API starting from the current date
     axios
       .get(
-        `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}&day=${currentDay}`
+        `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=2&month=${currentMonth}&year=${currentYear}`
       )
       .then(response => {
-        const data = response.data.data.slice(0, 7); // Limit to 7 days
+        // Find today's data in the response
+        const todayIndex = response.data.data.findIndex(
+          dayData =>
+            moment(dayData.date.readable, 'DD MMM YYYY').date() === currentDay
+        );
+
+        const data = response.data.data.slice(todayIndex, todayIndex + 7); // Get data for today and the next 6 days
         this.setState({ prayerTimes: data });
       })
       .catch(error => {
@@ -59,27 +65,18 @@ class PrayerTimesWeekAhead extends Component {
         .add(index, 'days')
         .format('ddd D MMM');
       const prayerData = this.getPrayerTimes(index);
-      const FajrBegins = day.timings.Fajr.replace(' (AWST)', '');
-      const DhuhrBegins = day.timings.Dhuhr.replace(' (AWST)', '');
-      const AsrBegins = day.timings.Asr.replace(' (AWST)', '');
-      const MaghribBegins = day.timings.Maghrib.replace(' (AWST)', '');
-      const IshaBegins = day.timings.Isha.replace(' (AWST)', '');
+      const MaghribAzaan = day.timings.Maghrib.replace(' (AWST)', '');
       return (
         <tr key={index} className="PrayerTimesWeekAhead-row">
           <td>{date}</td>
-          <td>{moment(FajrBegins, 'HH:mm').format('h:mm')}</td>
           <td>{prayerData.fajr_jamaah}</td>
-          <td>{moment(DhuhrBegins, 'HH:mm').format('h:mm')}</td>
           <td>{prayerData.zuhr_jamaah}</td>
-          <td>{moment(AsrBegins, 'HH:mm').format('h:mm')}</td>
           <td>{prayerData.asr_jamaah}</td>
-          <td>{moment(MaghribBegins, 'HH:mm').format('h:mm')}</td>
           <td>
-            {moment(MaghribBegins, 'HH:mm')
+            {moment(MaghribAzaan, 'HH:mm')
               .add(10, 'minutes')
               .format('h:mm')}
           </td>
-          <td>{moment(IshaBegins, 'HH:mm').format('h:mm')}</td>
           <td>{prayerData.isha_jamaah}</td>
         </tr>
       );
@@ -91,25 +88,20 @@ class PrayerTimesWeekAhead extends Component {
           <thead>
             <tr>
               <th>Week ahead</th>
-              <th colSpan="2">Fajr</th>
-              <th colSpan="2">Dhuhr</th>
-              <th colSpan="2">Asr</th>
-              <th colSpan="2">Maghrib</th>
-              <th colSpan="2">Isha</th>
+              <th>Fajr</th>
+              <th>Dhuhr</th>
+              <th>Asr</th>
+              <th>Maghrib</th>
+              <th>Isha</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td />
-              <td>Begins</td>
               <td>Iqamah</td>
-              <td>Begins</td>
               <td>Iqamah</td>
-              <td>Begins</td>
               <td>Iqamah</td>
-              <td>Begins</td>
               <td>Iqamah</td>
-              <td>Begins</td>
               <td>Iqamah</td>
             </tr>
             {rows}
