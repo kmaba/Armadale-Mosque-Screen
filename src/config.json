@@ -2,7 +2,7 @@
   "sliderMode": "slider",
   "slideTimeout": 8000,
   "googleSlides": {
-    "url": "https://docs.google.com/presentation/d/e/2PACX-1vQtlbDvGWrix_vdfxohZGMIug5zB6tJ4e83jAcbEscM14vy57fHI9XHm6NUFmfNOmQrffjMzpCKRsgV/embed?start=true&loop=false&delayms=8000",
+    "url": "https://docs.google.com/presentation/d/e/2PACX-1vQtlbDvGWrix_vdfxohZGMIug5zB6tJ4e83jAcbEscM14vy57fHI9XHm6NUFmfNOmQrffjMzpCKRsgV/embed?start=true&loop=false&delayms=8000&rm=minimal",
     "numberOfSlides": 7
   },
   "configJsons": {
