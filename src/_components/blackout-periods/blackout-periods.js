@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PrayerData from '../prayer-data/prayer-data';
 import moment from 'moment/moment';
-import View5 from '../../Views/View 6/View6';
+import View6 from '../../Views/View 6/View6';
+import axios from 'axios';
 import AppConfig from '../app-config/app-config';
 
 class BlackoutPeriods extends Component {
@@ -9,7 +10,7 @@ class BlackoutPeriods extends Component {
     super(props);
     var _appConfig = new AppConfig();
     this.state = {
-      blackOutSlide: <View5 />,
+      blackOutSlide: <View6 />,
       blackOutPeriods: {
         fajr: _appConfig.get('blackOutPeriod_fajr'),
         zuhr: _appConfig.get('blackOutPeriod_zuhr'),
@@ -22,17 +23,46 @@ class BlackoutPeriods extends Component {
   }
 
   getPrayerTimes() {
-    var date = moment().format('DD/MM/YYYY');
-    var _data = new PrayerData();
-    var currentDay = _data.getPrayerTimes(date);
-    var prayerTimes = {
-      fajr: `${currentDay['fajr_jamaah']} AM`,
-      zuhr: `${currentDay['zuhr_jamaah']} PM`,
-      asr: `${currentDay['asr_jamaah']} PM`,
-      maghrib: `${currentDay['maghrib_jamaah']} PM`,
-      isha: `${currentDay['isha_jamaah']} PM`
-    };
-    return prayerTimes;
+    return new Promise((resolve, reject) => {
+      const city = 'Perth';
+      const country = 'Australia';
+      const currentDate = moment();
+      const currentYear = currentDate.year();
+      const currentMonth = currentDate.month() + 1;
+      const currentDay = currentDate.date();
+
+      axios
+        .get(
+          `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=4&month=${currentMonth}&year=${currentYear}`
+        )
+        .then(response => {
+          // Find today's data in the response
+          const todayData = response.data.data.find(
+            dayData =>
+              moment(dayData.date.readable, 'DD MMM YYYY').date() === currentDay
+          );
+
+          var date = moment().format('DD/MM/YYYY');
+          var _data = new PrayerData();
+          var currentDay = _data.getPrayerTimes(date);
+
+          let data = todayData.timings;
+          const prayerTimes = {
+            fajr: `${currentDay['fajr_jamaah']} AM`,
+            zuhr: `${currentDay['zuhr_jamaah']} PM`,
+            asr: `${currentDay['asr_jamaah']} PM`,
+            maghrib: `${moment(data['Maghrib'].replace(' (AWST)', ''), 'HH:mm')
+              .add(10, 'minutes')
+              .format('h:mm')} PM`,
+            isha: `${currentDay['isha_jamaah']} PM`
+          };
+          resolve(prayerTimes);
+        })
+        .catch(error => {
+          console.error('Error fetching prayer times:', error);
+          reject(error);
+        });
+    });
   }
 
   getCurrentTime() {
