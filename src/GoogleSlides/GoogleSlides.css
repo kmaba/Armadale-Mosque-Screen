@@ -13,3 +13,10 @@
   padding: 20px;
   padding-top: 0px;
 }
+
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

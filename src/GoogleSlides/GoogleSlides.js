@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
 import './GoogleSlides.css';
+import AppConfig from '../_components/app-config/app-config';
 import JummahTimes from '../_components/jummah-times/jummah-times';
 import PrayerTimes from '../_components/prayer-times/prayer-times';
 import config from '../config.json';
+import moment from 'moment';
 
 class GoogleSlides extends Component {
   constructor(props) {
     super(props);
+    var _appConfig = new AppConfig();
+    var format = _appConfig.get('time_format')
+      ? _appConfig.get('time_format')
+      : 'h:mm A';
     this.state = {
       url:
         config.googleSlides && config.googleSlides.url
           ? config.googleSlides.url
-          : ''
+          : '',
+      time: this.getTime(format),
+      format: format
     };
+  }
+
+  getTime(format = 'h:mm A') {
+    return moment().format(format);
+  }
+
+  tick() {
+    this.setState(() => ({
+      time: this.getTime(this.state.format)
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
   }
 
   componentWillMount() {
@@ -57,13 +79,11 @@ class GoogleSlides extends Component {
                 <div className="row">
                   <PrayerTimes />
                 </div>
-                <div className="col-12 col-md-6">
-                  <div className="row">
-                    <PrayerTimes />
-                  </div>
-                  <div className="row">
-                    <JummahTimes />
-                  </div>
+                <div className="row">
+                  <JummahTimes />
+                </div>
+                <div className=".col-md-6">
+                  <div className="Clock">It is {this.state.time}</div>
                 </div>
               </div>
             </div>
