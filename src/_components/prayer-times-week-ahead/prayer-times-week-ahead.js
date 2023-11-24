@@ -98,11 +98,11 @@ class PrayerTimesWeekAhead extends Component {
           <tbody>
             <tr>
               <td />
-              <td>Iqamah</td>
-              <td>Iqamah</td>
-              <td>Iqamah</td>
-              <td>Iqamah</td>
-              <td>Iqamah</td>
+              <td>━━</td>
+              <td>━━</td>
+              <td>-Iqamah-</td>
+              <td>━━</td>
+              <td>━━</td>
             </tr>
             {rows}
           </tbody>
