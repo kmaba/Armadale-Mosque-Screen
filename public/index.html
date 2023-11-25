@@ -24,39 +24,6 @@
   </noscript>
   <div id="root"></div>
   <script>
-    let fullscreen = false;
-    document.addEventListener("click", function () {
-      if (fullscreen) {
-        exitFullscreen();
-      } else {
-        enterFullscreen();
-      }
-    });
-  
-    function enterFullscreen() {
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) {
-        document.documentElement.msRequestFullscreen();
-      }
-      fullscreen = true;
-    }
-    function exitFullscreen() {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-      fullscreen = false;
-    }
     setTimeout(function () {
       location.reload();
     }, 3600 * 1000);
