@@ -6,7 +6,7 @@ import BuildNumber from '../../_components/build-number/build-number';
 import PrayerTimesWeekAhead from '../../_components/prayer-times-week-ahead/prayer-times-week-ahead';
 import Branding from '../../_components/branding/branding';
 
-class View4 extends Component {
+class View5 extends Component {
   render() {
     return (
       <div className="View4">

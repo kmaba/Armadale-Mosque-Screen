@@ -10,7 +10,7 @@ import AdditionalMessage from '../../_components/additional-message/additional-m
 import AppConfig from '../../_components/app-config/app-config';
 import Branding from '../../_components/branding/branding';
 
-class View2 extends Component {
+class View3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
