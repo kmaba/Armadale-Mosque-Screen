@@ -30,4 +30,4 @@ class View4 extends Component {
   }
 }
 
-export default View4;
+export default View5;
