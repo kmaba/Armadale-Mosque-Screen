@@ -6,10 +6,10 @@ import BuildNumber from '../../_components/build-number/build-number';
 import Branding from '../../_components/branding/branding';
 import HadithOfTheDay from '../../_components/hadith-of-the-day/hadith-of-the-day';
 
-class View6 extends Component {
+class View7 extends Component {
   render() {
     return (
-      <div className="View6">
+      <div className="View7">
         <div className="row">
           <Logo />
         </div>
@@ -30,4 +30,4 @@ class View6 extends Component {
   }
 }
 
-export default View6;
+export default View7;

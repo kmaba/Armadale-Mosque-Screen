@@ -5,7 +5,7 @@ import Clock from '../../_components/clock/clock';
 import BuildNumber from '../../_components/build-number/build-number';
 import Branding from '../../_components/branding/branding';
 
-class View5 extends Component {
+class View6 extends Component {
   componentWillMount() {
     document.body.style.background = 'black';
   }
@@ -16,7 +16,7 @@ class View5 extends Component {
 
   render() {
     return (
-      <div className="View5 BlackoutWrapper">
+      <div className="View6 BlackoutWrapper">
         <div className="row blackout-logo">
           <Logo />
         </div>
@@ -37,4 +37,4 @@ class View5 extends Component {
   }
 }
 
-export default View5;
+export default View6;
