@@ -8,7 +8,6 @@
   "configJsons": {
     "prayerData": "https://script.google.com/macros/s/AKfycbzG1PEjY3Gopuw9G59oNY2XYeKyZanQcXqYCXgw6Xo3mk5yqrE/exec?google_sheet_id=1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
     "hadithData": "https://script.google.com/macros/s/AKfycby6jZBf7sKGLte5mdxbqeENeRfZsX_XZqntI-6n8-9Z3-8mYUio/exec?google_sheet_id=1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
-    "appConfig": "https://raw.githubusercontent.com/kmaba/Armadale-Mosque-Screen/main/src/appConfig.json",
     "refreshRate": 1
   }
 }
