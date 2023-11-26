@@ -84,6 +84,11 @@ class AppConfig {
   getAppConfig() {
     return this.appConfig;
   }
+
+  // Function to get the last updated timestamp
+  getLastUpdatedTime() {
+    return window.localStorage.getItem('appConfig_lastUpdated');
+  }
 }
 
 export default AppConfig;
