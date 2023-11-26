@@ -40,9 +40,7 @@ class View2 extends Component {
             </div>
             <div className="row">
               <AdditionalMessage
-                message={this.state._appConfig.get(
-                  'Daily_Message'
-                )}
+                message={this.state._appConfig.get('Daily_Message')}
               />
             </div>
           </div>
@@ -62,4 +60,4 @@ class View2 extends Component {
   }
 }
 
-export default View2;
+export default View3;
