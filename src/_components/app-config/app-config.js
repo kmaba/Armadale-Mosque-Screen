@@ -26,7 +26,10 @@ class AppConfig {
       alert('REACT_APP_APP_CONFIG_SPREADSHEET_URL env not set');
     }
 
-    return axios.get(`${spreadsheetUrl}`).then(json => {
+    const cacheBust = Math.floor(Math.random() * 1000000);
+    const urlWithCacheBust = `${spreadsheetUrl}?cacheBust=${cacheBust}`;
+
+    return axios.get(urlWithCacheBust).then(json => {
       this.storeAppConfig(json.data);
     });
   }
