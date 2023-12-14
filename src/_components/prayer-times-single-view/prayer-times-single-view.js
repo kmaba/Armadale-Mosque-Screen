@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import axios from 'axios';
 import './prayer-times-single-view.css';
 import PrayerData from '../prayer-data/prayer-data';
 import nextJammahTime from '../next-jamah-time/next-jamah-time';
@@ -13,6 +14,60 @@ class PrayerTimesSingleView extends Component {
       nextJammah: this.getNextJammah(),
       jammahCheckingInterval: 60000
     };
+  }
+
+  fetchPrayerTimes() {
+    const city = 'Perth';
+    const country = 'Australia';
+
+    // Get the current year, month, and day
+    const currentDate = moment();
+    const currentYear = currentDate.year();
+    const currentMonth = currentDate.month() + 1;
+    const currentDay = currentDate.date();
+
+    // Fetch prayer times from the Aladhan API starting from the current date
+    axios
+      .get(
+        `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=4&month=${currentMonth}&year=${currentYear}`
+      )
+      .then(response => {
+        // Find today's data in the response
+        const todayData = response.data.data.find(
+          dayData =>
+            moment(dayData.date.readable, 'DD MMM YYYY').date() === currentDay
+        );
+
+        let data = todayData.timings; // Get today's prayer times
+
+        // Remove "(AWST)" and convert time format
+        for (let key in data) {
+          data[key] = moment(data[key].replace(' (AWST)', ''), 'HH:mm').format(
+            'h:mm'
+          );
+        }
+
+        this.setState({ prayerTimes: data });
+
+        // Get jamaah times from prayer-data.js
+        const prayerData = new PrayerData();
+        const jamaahTimes = prayerData.getPrayerTimes(
+          currentDate.format('DD/MM/YYYY')
+        );
+
+        // Add 10 minutes to Maghrib prayer time
+        jamaahTimes['maghrib_jamaah'] = moment(
+          this.state.prayerTimes['Maghrib'],
+          'h:mm'
+        )
+          .add(10, 'minutes')
+          .format('h:mm');
+
+        this.setState({ jamaahTimes });
+      })
+      .catch(error => {
+        console.error('Error fetching prayer times:', error);
+      });
   }
 
   getPrayerTimes() {
