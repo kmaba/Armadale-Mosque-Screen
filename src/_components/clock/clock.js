@@ -84,8 +84,8 @@ class Clock extends Component {
             <g fill="currentColor">
               <circle cx="25.5" cy="6" r="1" />
               <circle cx="25.5" cy="14" r="1" />
-              <circle cx="54.5" cy="6" r="1" />
-              <circle cx="54.5" cy="14" r="1" />
+              {/* <circle cx="54.5" cy="6" r="1" />
+              <circle cx="54.5" cy="14" r="1" /> */}
             </g>
             <g
               fill="none"
@@ -276,7 +276,7 @@ class Clock extends Component {
                   points="9 10,1 10,1 1,9 1,9 19,1 19"
                 />
               </g>
-              <g data-digit="0" transform="translate(58,0)">
+              {/* <g data-digit="0" transform="translate(58,0)">
                 <polyline
                   className="clock__digit"
                   strokeDasharray="53 53"
@@ -374,8 +374,8 @@ class Clock extends Component {
                   strokeDasharray="52 52"
                   strokeDashoffset="-52"
                   points="9 10,1 10,1 1,9 1,9 19,1 19"
-                />
-              </g>
+                /> 
+              </g>*/}
             </g>
           </svg>
         </svg>
