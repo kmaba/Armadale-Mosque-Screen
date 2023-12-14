@@ -5,7 +5,7 @@ class AppConfig {
     // Initialize the app config directly with the JSON
     this.appConfig = {
       Logo_URL:
-        'https://raw.githubusercontent.com/kmaba/Armadale-Mosque-Screen/main/branding/Logo-White.png',
+        'https://raw.githubusercontent.com/kmaba/Armadale-Mosque-Screen/main/branding/Logo-Text.png',
       Logo_orientation: 'vertical',
       primary_colour: '#31669b',
       secondary_colour: '#254d75',
@@ -37,7 +37,7 @@ class AppConfig {
       blackOutPeriod_asr: '15',
       blackOutPeriod_maghrib: '17',
       blackOutPeriod_isha: '20',
-      blackOutPeriod_jummah: '60',
+      blackOutPeriod_jummah: '70',
       refreshRate: 1
     };
 
