@@ -21,7 +21,7 @@ class Logo extends Component {
         <img
           src={this.state.logo}
           alt=""
-          style={{ width: '40%', height: 'auto' }}
+          style={{ width: '52%', height: 'auto' }}
         />
       </div>
     );
