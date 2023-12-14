@@ -6,6 +6,7 @@ import PrayerTimes from '../../_components/prayer-times/prayer-times';
 import Date from '../../_components/date/date';
 import BuildNumber from '../../_components/build-number/build-number';
 import SunriseAndZawwal from '../../_components/sunrise-and-zawwal/sunrise-and-zawwal';
+import JummahTimes from '../../_components/jummah-times/jummah-times';
 import AdditionalMessage from '../../_components/additional-message/additional-message';
 import AppConfig from '../../_components/app-config/app-config';
 import Branding from '../../_components/branding/branding';
@@ -47,6 +48,9 @@ class View1 extends Component {
           <div className="col-12 col-md-6">
             <div className="row">
               <PrayerTimes />
+            </div>
+            <div className="row">
+              <JummahTimes />
             </div>
             <div className="row">
               <SunriseAndZawwal />
