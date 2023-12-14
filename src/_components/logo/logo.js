@@ -18,7 +18,11 @@ class Logo extends Component {
         className={`LogoWrapper LogoWrapper--${this.state.orientation ??
           'vertical'} d-none d-lg-block`}
       >
-        <img src={this.state.logo} alt="" />
+        <img
+          src={this.state.logo}
+          alt=""
+          style={{ width: '40%', height: 'auto' }}
+        />
       </div>
     );
   }
