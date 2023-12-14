@@ -8,7 +8,7 @@ class SunriseAndZawwal extends Component {
     super(props);
     this.state = {
       sunrise: 'Loading...',
-      zawwal: 'Loading...',
+      zawwal: 'Loading...'
     };
   }
 
@@ -18,8 +18,10 @@ class SunriseAndZawwal extends Component {
 
   fetchSunriseAndZawwalTime() {
     // Fetch sunrise time
-    const sunriseApiUrl = 'https://api.sunrisesunset.io/json?lat=-31.950527&lng=115.860457'; // Perth's latitude and longitude
-    axios.get(sunriseApiUrl)
+    const sunriseApiUrl =
+      'https://api.sunrisesunset.io/json?lat=-31.950527&lng=115.860457'; // Perth's latitude and longitude
+    axios
+      .get(sunriseApiUrl)
       .then(response => {
         const data = response.data.results;
         const sunriseTime = data.sunrise;
@@ -29,15 +31,17 @@ class SunriseAndZawwal extends Component {
         console.error('Error fetching sunrise time:', error);
         this.setState({ sunrise: 'Error' });
       });
-  
+
     // Fetch solar noon time
-    const zawwalApiUrl = 'https://api.sunrisesunset.io/json?lat=-31.950527&lng=115.860457'; // Perth's latitude and longitude
-    axios.get(zawwalApiUrl)
+    const zawwalApiUrl =
+      'https://api.sunrisesunset.io/json?lat=-31.950527&lng=115.860457'; // Perth's latitude and longitude
+    axios
+      .get(zawwalApiUrl)
       .then(response => {
         const data = response.data.results;
         const solarNoonTime = data.solar_noon;
         this.setState({ zawwal: solarNoonTime });
-  
+
         // Use moment.js to handle different time formats
         const solarNoonMoment = moment(solarNoonTime, 'h:mm:ss A');
         if (solarNoonMoment.isValid()) {
@@ -52,7 +56,6 @@ class SunriseAndZawwal extends Component {
         this.setState({ zawwal: 'Error' });
       });
   }
-  
 
   render() {
     return (
@@ -61,13 +64,13 @@ class SunriseAndZawwal extends Component {
           <thead>
             <tr>
               <th>Sunrise</th>
-              <th>Zawwal</th>
+              {/* <th>Zawwal</th> */}
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{this.state.sunrise}</td>
-              <td>{this.state.zawwal}</td>
+              {/* <td>{this.state.zawwal}</td> */}
             </tr>
           </tbody>
         </table>
