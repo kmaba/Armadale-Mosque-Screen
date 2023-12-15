@@ -2,10 +2,9 @@ import moment from 'moment';
 
 class AppConfig {
   constructor() {
-    // Initialize the app config directly with the JSON
     this.appConfig = {
       Logo_URL:
-        'https://raw.githubusercontent.com/kmaba/Armadale-Mosque-Screen/main/branding/Logo-Text.png',
+        'https://raw.githubusercontent.com/kmaba/Armadale-Mosque-Screen/main/branding/Logo-Text-2.png',
       Logo_orientation: 'vertical',
       primary_colour: '#31669b',
       secondary_colour: '#254d75',
@@ -40,8 +39,6 @@ class AppConfig {
       blackOutPeriod_jummah: '70',
       refreshRate: 1
     };
-
-    // Set an interval to check for updates every second
     setInterval(() => this.checkForUpdates(), 1000);
   }
 
@@ -50,42 +47,25 @@ class AppConfig {
     var data = this.getAppConfig();
     return data ? data[key] : '';
   }
-
-  // Function to check for updates
   checkForUpdates() {
-    // Get the current timestamp
     const currentTimestamp = moment().unix();
-
-    // Calculate the time difference since the last update
     const lastUpdatedDiff =
       currentTimestamp - parseInt(this.getLastUpdatedTime());
-
-    // Check if the difference exceeds the refresh rate
     if (lastUpdatedDiff > this.appConfig.refreshRate * 60) {
-      // Log a message to the console to indicate an update
       console.log('Updating App Config....');
-
-      // Update the last updated timestamp
       this.storeAppConfigLastUpdated(currentTimestamp);
-
-      // You can perform additional update logic here if needed
-
-      // Log the updated app config
       console.log('Current App Config:', this.appConfig);
     }
   }
 
-  // Function to store the last updated timestamp
   storeAppConfigLastUpdated(timestamp) {
     window.localStorage.setItem('appConfig_lastUpdated', timestamp);
   }
 
-  // Function to get the stored app config
   getAppConfig() {
     return this.appConfig;
   }
 
-  // Function to get the last updated timestamp
   getLastUpdatedTime() {
     return window.localStorage.getItem('appConfig_lastUpdated');
   }
