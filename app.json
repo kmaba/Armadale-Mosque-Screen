@@ -3,5 +3,5 @@
   "description": "An information screen built for the Armadale mosque.",
   "repository": "https://github.com/kmaba/Armadale-Mosque-Screen",
   "logo": "https://raw.githubusercontent.com/kmaba/Armadale-Mosque-Screen/main/branding/Logo-White.png",
-  "keywords": ["charity", "information", "screen", "elm", "reactjs", "mosques"]
+  "keywords": ["charity", "information", "screen", "amic", "reactjs", "mosques", "Armadale"]
 }
