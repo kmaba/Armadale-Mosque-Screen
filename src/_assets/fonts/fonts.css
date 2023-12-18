@@ -45,3 +45,9 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Segment7Standard';
+  src: url('Segment7Standard.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
