@@ -1,25 +1,27 @@
 .HadithOfTheDayWrapper {
-  min-width: 70%;
-  width: auto;
-  display: block;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  max-width: 70%;
   text-align: center;
   background-color: #fff;
-  color: #000;
-  padding: 50px;
+  left: 30%;
+  margin: 0 auto;
+  font-size: 4em;
+  margin-top: 100px;
+  border-radius: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .Hadith {
-  font-size: 40px;
+  font-size: 30px; /* Reduced font size */
   text-align: justify;
-  margin-top: 40px;
+  margin-top: 30px; /* Reduced margin */
+  margin: 20px;
 }
 
 .HadithSource {
-  font-size: 22px;
+  font-size: 18px; /* Reduced font size */
   margin: inherit;
+  font-weight: bold;
+  font-size: 0.4em;
 }
 
 @media only screen and (max-width: 991px) {
@@ -27,14 +29,26 @@
     width: 90%;
     margin-top: 10px;
     padding: 10px;
+    font-size: 2em;
   }
+}
 
-  .HadithOfTheDayTitle h1 {
-    font-size: 30px;
+@media only screen and (max-width: 600px) {
+  .HadithOfTheDayWrapper {
+    font-size: 2em;
+    margin-top: 10px;
   }
+  .HadithSource {
+    font-size: 1em;
+  }
+}
 
-  .Hadith {
-    font-size: 25px;
-    text-align: center;
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .HadithOfTheDayWrapper {
+    font-size: 2em;
+    margin-top: 10px;
+  }
+  .HadithSource {
+    font-size: 1em;
   }
 }

@@ -5,6 +5,7 @@ import Clock from '../../_components/clock/clock';
 import Date from '../../_components/date/date';
 import BuildNumber from '../../_components/build-number/build-number';
 import NextJammahTime from '../../_components/next-jamah-time/next-jamah-time';
+import HadithOfTheDay from '../../_components/hadith-of-the-day/hadith-of-the-day';
 import AdditionalMessage from '../../_components/additional-message/additional-message';
 import AppConfig from '../../_components/app-config/app-config';
 import Branding from '../../_components/branding/branding';
@@ -37,10 +38,13 @@ class View4 extends Component {
             <div className="row">
               <Date />
             </div>
-            <div className="row">
+            {/* <div className="row">
               <AdditionalMessage
-                message={this.state._appConfig.get('Mobile_Use_Notification')}
+                message={this.state._appConfig.get("Mobile_Use_Notification")}
               />
+            </div> */}
+            <div className="row">
+              <HadithOfTheDay />
             </div>
           </div>
           <div className="col-12 col-md-6">
