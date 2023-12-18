@@ -83,7 +83,10 @@ class GoogleSlides extends Component {
                   <JummahTimes />
                 </div>
                 <div className=".col-md-6">
-                  <div className="Clock">It is {this.state.time}</div>
+                  <div className="Clock">
+                    <a style={{ opacity: '0%' }}>--/</a>
+                    {this.state.time}
+                  </div>
                 </div>
               </div>
             </div>

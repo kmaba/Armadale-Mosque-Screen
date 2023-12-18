@@ -13,6 +13,7 @@ class Clock extends Component {
 
     this.state = {
       time: this.getTime(format),
+      seconds: 0,
       format: format
     };
   }
@@ -22,9 +23,12 @@ class Clock extends Component {
   }
 
   tick() {
-    this.setState(() => ({
-      time: this.getTime(this.state.format)
-    }));
+    const now = new Date();
+    const seconds = now.getSeconds();
+    this.setState({
+      time: now.toLocaleTimeString(),
+      seconds: seconds
+    });
   }
 
   updateTime() {
@@ -79,204 +83,205 @@ class Clock extends Component {
   render() {
     return (
       <div className="ClockWrapper">
-        <svg className="Clock" viewBox="0 0 80 20" role="img">
+        <div className="ClockOnlyWrapper">
           <svg className="Clock" viewBox="0 0 80 20" role="img">
-            <g fill="currentColor">
-              <circle cx="25.5" cy="6" r="1" />
-              <circle cx="25.5" cy="14" r="1" />
-              {/* <circle cx="54.5" cy="6" r="1" />
-              <circle cx="54.5" cy="14" r="1" /> */}
-            </g>
-            <g
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <g data-digit="0">
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="53 53"
-                  strokeDashoffset="-53"
-                  points="1 1,9 1,9 19,1 19,1 1"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="19 19"
-                  strokeDashoffset="-19"
-                  points="9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="43 43"
-                  strokeDashoffset="-43"
-                  points="1 1,9 1,9 10,1 10,1 19,9 19"
-                />
+            <svg className="Clock" viewBox="0 0 80 20" role="img">
+              <g fill="currentColor">
+                <circle cx="25.5" cy="6" r="1" />
+                <circle cx="25.5" cy="14" r="1" />
+                <circle cx="54.5" cy="6" r="1" />
+                <circle cx="54.5" cy="14" r="1" />
               </g>
-              <g data-digit="0" transform="translate(12,0)">
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="53 53"
-                  strokeDashoffset="-53"
-                  points="1 1,9 1,9 19,1 19,1 1"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="19 19"
-                  strokeDashoffset="-19"
-                  points="9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="43 43"
-                  strokeDashoffset="-43"
-                  points="1 1,9 1,9 10,1 10,1 19,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="51 51"
-                  strokeDashoffset="-51"
-                  points="1 1,9 1,9 10,1 10,9 10,9 19,1 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="45 45"
-                  strokeDashoffset="-45"
-                  points="1 1,1 10,9 10,9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="43 43"
-                  strokeDashoffset="-43"
-                  points="9 1,1 1,1 10,9 10,9 19,1 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="52 52"
-                  strokeDashoffset="-52"
-                  points="9 1,1 1,1 19,9 19,9 10,1 10"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="27 27"
-                  strokeDashoffset="-27"
-                  points="1 1,9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="61 61"
-                  strokeDashoffset="-61"
-                  points="9 10,1 10,1 1,9 1,9 19,1 19,1 10"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="52 52"
-                  strokeDashoffset="-52"
-                  points="9 10,1 10,1 1,9 1,9 19,1 19"
-                />
-              </g>
-              <g data-digit="0" transform="translate(29,0)">
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="53 53"
-                  strokeDashoffset="-53"
-                  points="1 1,9 1,9 19,1 19,1 1"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="19 19"
-                  strokeDashoffset="-19"
-                  points="9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="43 43"
-                  strokeDashoffset="-43"
-                  points="1 1,9 1,9 10,1 10,1 19,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="51 51"
-                  strokeDashoffset="-51"
-                  points="1 1,9 1,9 10,1 10,9 10,9 19,1 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="45 45"
-                  strokeDashoffset="-45"
-                  points="1 1,1 10,9 10,9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="43 43"
-                  strokeDashoffset="-43"
-                  points="9 1,1 1,1 10,9 10,9 19,1 19"
-                />
-              </g>
-              <g data-digit="0" transform="translate(41,0)">
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="53 53"
-                  strokeDashoffset="-53"
-                  points="1 1,9 1,9 19,1 19,1 1"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="19 19"
-                  strokeDashoffset="-19"
-                  points="9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="43 43"
-                  strokeDashoffset="-43"
-                  points="1 1,9 1,9 10,1 10,1 19,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="51 51"
-                  strokeDashoffset="-51"
-                  points="1 1,9 1,9 10,1 10,9 10,9 19,1 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="45 45"
-                  strokeDashoffset="-45"
-                  points="1 1,1 10,9 10,9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="43 43"
-                  strokeDashoffset="-43"
-                  points="9 1,1 1,1 10,9 10,9 19,1 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="52 52"
-                  strokeDashoffset="-52"
-                  points="9 1,1 1,1 19,9 19,9 10,1 10"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="27 27"
-                  strokeDashoffset="-27"
-                  points="1 1,9 1,9 19"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="61 61"
-                  strokeDashoffset="-61"
-                  points="9 10,1 10,1 1,9 1,9 19,1 19,1 10"
-                />
-                <polyline
-                  className="clock__digit"
-                  strokeDasharray="52 52"
-                  strokeDashoffset="-52"
-                  points="9 10,1 10,1 1,9 1,9 19,1 19"
-                />
-              </g>
-              {/* <g data-digit="0" transform="translate(58,0)">
+              <g
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <g data-digit="0">
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="53 53"
+                    strokeDashoffset="-53"
+                    points="1 1,9 1,9 19,1 19,1 1"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="19 19"
+                    strokeDashoffset="-19"
+                    points="9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="43 43"
+                    strokeDashoffset="-43"
+                    points="1 1,9 1,9 10,1 10,1 19,9 19"
+                  />
+                </g>
+                <g data-digit="0" transform="translate(12,0)">
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="53 53"
+                    strokeDashoffset="-53"
+                    points="1 1,9 1,9 19,1 19,1 1"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="19 19"
+                    strokeDashoffset="-19"
+                    points="9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="43 43"
+                    strokeDashoffset="-43"
+                    points="1 1,9 1,9 10,1 10,1 19,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="51 51"
+                    strokeDashoffset="-51"
+                    points="1 1,9 1,9 10,1 10,9 10,9 19,1 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="45 45"
+                    strokeDashoffset="-45"
+                    points="1 1,1 10,9 10,9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="43 43"
+                    strokeDashoffset="-43"
+                    points="9 1,1 1,1 10,9 10,9 19,1 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="52 52"
+                    strokeDashoffset="-52"
+                    points="9 1,1 1,1 19,9 19,9 10,1 10"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="27 27"
+                    strokeDashoffset="-27"
+                    points="1 1,9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="61 61"
+                    strokeDashoffset="-61"
+                    points="9 10,1 10,1 1,9 1,9 19,1 19,1 10"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="52 52"
+                    strokeDashoffset="-52"
+                    points="9 10,1 10,1 1,9 1,9 19,1 19"
+                  />
+                </g>
+                <g data-digit="0" transform="translate(29,0)">
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="53 53"
+                    strokeDashoffset="-53"
+                    points="1 1,9 1,9 19,1 19,1 1"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="19 19"
+                    strokeDashoffset="-19"
+                    points="9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="43 43"
+                    strokeDashoffset="-43"
+                    points="1 1,9 1,9 10,1 10,1 19,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="51 51"
+                    strokeDashoffset="-51"
+                    points="1 1,9 1,9 10,1 10,9 10,9 19,1 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="45 45"
+                    strokeDashoffset="-45"
+                    points="1 1,1 10,9 10,9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="43 43"
+                    strokeDashoffset="-43"
+                    points="9 1,1 1,1 10,9 10,9 19,1 19"
+                  />
+                </g>
+                <g data-digit="0" transform="translate(41,0)">
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="53 53"
+                    strokeDashoffset="-53"
+                    points="1 1,9 1,9 19,1 19,1 1"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="19 19"
+                    strokeDashoffset="-19"
+                    points="9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="43 43"
+                    strokeDashoffset="-43"
+                    points="1 1,9 1,9 10,1 10,1 19,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="51 51"
+                    strokeDashoffset="-51"
+                    points="1 1,9 1,9 10,1 10,9 10,9 19,1 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="45 45"
+                    strokeDashoffset="-45"
+                    points="1 1,1 10,9 10,9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="43 43"
+                    strokeDashoffset="-43"
+                    points="9 1,1 1,1 10,9 10,9 19,1 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="52 52"
+                    strokeDashoffset="-52"
+                    points="9 1,1 1,1 19,9 19,9 10,1 10"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="27 27"
+                    strokeDashoffset="-27"
+                    points="1 1,9 1,9 19"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="61 61"
+                    strokeDashoffset="-61"
+                    points="9 10,1 10,1 1,9 1,9 19,1 19,1 10"
+                  />
+                  <polyline
+                    className="clock__digit"
+                    strokeDasharray="52 52"
+                    strokeDashoffset="-52"
+                    points="9 10,1 10,1 1,9 1,9 19,1 19"
+                  />
+                </g>
+                {/* <g data-digit="0" transform="translate(58,0)">
                 <polyline
                   className="clock__digit"
                   strokeDasharray="53 53"
@@ -376,9 +381,16 @@ class Clock extends Component {
                   points="9 10,1 10,1 1,9 1,9 19,1 19"
                 /> 
               </g>*/}
-            </g>
+              </g>
+            </svg>
           </svg>
-        </svg>
+        </div>
+        <div
+          className="Clock"
+          style={{ position: 'relative', bottom: '1.25rem', right: '0.25rem' }}
+        >
+          {this.state.seconds}
+        </div>
       </div>
     );
   }

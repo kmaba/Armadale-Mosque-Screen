@@ -1,14 +1,22 @@
 .ClockWrapper {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 15px;
   background-color: white;
   font-weight: 900;
   border-radius: 25px;
   padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 40rem; /* Set the width */
+  overflow: hidden; /* Hide any content that exceeds the div size */
 }
-
+.ClockOnlyWrapper {
+  width: 25rem;
+}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap');
 .Clock {
+  font-family: 'Orbitron', sans-serif;
   font-size: 8em;
   min-height: 60px;
   color: 006b76;
