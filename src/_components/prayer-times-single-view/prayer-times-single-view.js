@@ -29,7 +29,7 @@ class PrayerTimesSingleView extends Component {
     // Fetch prayer times from the Aladhan API starting from the current date
     axios
       .get(
-        `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=4&month=${currentMonth}&year=${currentYear}`
+        `https://api.aladhan.com/v1/calendarByCity?city=${city}&country=${country}&method=3&month=${currentMonth}&year=${currentYear}`
       )
       .then(response => {
         // Find today's data in the response
