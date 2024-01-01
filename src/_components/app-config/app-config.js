@@ -34,9 +34,9 @@ class AppConfig {
       blackOutPeriod_fajr: '10',
       blackOutPeriod_zuhr: '10',
       blackOutPeriod_asr: '10',
-      // blackOutPeriod_maghrib: 'null', i will implement this later
+      blackOutPeriod_maghrib: '10',
       blackOutPeriod_isha: '10',
-      blackOutPeriod_jummah: '70',
+      blackOutPeriod_jummah: '40',
       refreshRate: 1
     };
     setInterval(() => this.checkForUpdates(), 1000);
