@@ -31,11 +31,11 @@ class AppConfig {
       Jummah_slot_2_label: 'Iqamah',
       Jummah_slot_2_winter: '1:30',
       Jummah_slot_2_summer: '1:30',
-      blackOutPeriod_fajr: '15',
-      blackOutPeriod_zuhr: '15',
-      blackOutPeriod_asr: '15',
-      blackOutPeriod_maghrib: '17',
-      blackOutPeriod_isha: '20',
+      blackOutPeriod_fajr: '10',
+      blackOutPeriod_zuhr: '10',
+      blackOutPeriod_asr: '10',
+      // blackOutPeriod_maghrib: 'null', i will implement this later
+      blackOutPeriod_isha: '10',
       blackOutPeriod_jummah: '70',
       refreshRate: 1
     };
