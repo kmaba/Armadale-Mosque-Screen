@@ -1,9 +1,9 @@
 {
   "sliderMode": "slider",
-  "slideTimeout": 8000,
+  "slideTimeout": 16000,
   "googleSlides": {
-    "url": "https://docs.google.com/presentation/d/e/2PACX-1vQtlbDvGWrix_vdfxohZGMIug5zB6tJ4e83jAcbEscM14vy57fHI9XHm6NUFmfNOmQrffjMzpCKRsgV/embed?start=true&loop=false&delayms=8000&rm=minimal",
-    "numberOfSlides": 5
+    "url": "https://docs.google.com/presentation/d/e/2PACX-1vQtlbDvGWrix_vdfxohZGMIug5zB6tJ4e83jAcbEscM14vy57fHI9XHm6NUFmfNOmQrffjMzpCKRsgV/embed?start=true&loop=false&delayms=16000&rm=minimal",
+    "numberOfSlides": 6
   },
   "configJsons": {
     "prayerData": "https://script.google.com/macros/s/AKfycbzG1PEjY3Gopuw9G59oNY2XYeKyZanQcXqYCXgw6Xo3mk5yqrE/exec?google_sheet_id=1lxIWnHqQMlizw3uvPK7Zbh1Gk3DgkJt6_jC0kLIQiUs",
