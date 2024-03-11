@@ -61,7 +61,8 @@ class PrayerTimes extends Component {
           this.state.prayerTimes['Maghrib'],
           'h:mm'
         )
-          .add(10, 'minutes')
+          // .add(10, 'minutes')
+          .add(20, 'minutes')
           .format('h:mm');
 
         this.setState({ jamaahTimes });

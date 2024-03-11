@@ -68,7 +68,7 @@ class BlackoutPeriods extends Component {
           this.state.prayerTimes['Maghrib'],
           'h:mm'
         )
-          .add(10, 'minutes')
+          .add(20, 'minutes')
           .format('h:mm');
 
         this.setState({ jamaahTimes });
@@ -121,17 +121,22 @@ class BlackoutPeriods extends Component {
   }
 
   isBlackout(prayerName) {
-    // return true; // for testing
     var todaysPrayerTime = this.getPrayerTimes();
     var durations = this.state.blackOutPeriods;
     var currentTime = this.getCurrentTime();
     var isJummahPeriod = this.isJummahPeriod(prayerName);
 
+    // Use maghrib prayer time from jamaahTimes if prayerName is 'maghrib'
+    var prayerTime =
+      prayerName === 'maghrib'
+        ? this.state.jamaahTimes['maghrib_jamaah']
+        : todaysPrayerTime[prayerName];
+
     if (
-      currentTime >= this.stringToTime(todaysPrayerTime[prayerName]) &&
+      currentTime >= this.stringToTime(prayerTime) &&
       currentTime <=
         this.getBlackoutEndTime(
-          this.stringToTime(todaysPrayerTime[prayerName]),
+          this.stringToTime(prayerTime),
           isJummahPeriod ? durations['jummah'] : durations[prayerName]
         )
     ) {
