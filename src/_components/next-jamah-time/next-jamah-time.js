@@ -41,7 +41,8 @@ class NextJammahTime extends Component {
 
           let data = todayData.timings;
           const mTime = moment(data['Maghrib'].replace(' (AWST)', ''), 'HH:mm')
-            .add(10, 'minutes')
+            // .add(10, 'minutes')
+            .add(20, 'minutes')
             .format('h:mm A');
           this.setState({ setMaghribTime: mTime }, resolve);
         })
