@@ -74,8 +74,7 @@ class PrayerTimesWeekAhead extends Component {
           <td>{prayerData.asr_jamaah}</td>
           <td>
             {moment(MaghribAzaan, 'HH:mm')
-              // .add(10, 'minutes')
-              .add(20, 'minutes')
+              .add(10, 'minutes')
               .format('h:mm')}
           </td>
           <td>{prayerData.isha_jamaah}</td>
