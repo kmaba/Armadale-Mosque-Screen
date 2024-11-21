@@ -49,9 +49,7 @@ class SingleView extends Component {
             <div className="row">
               <PrayerTimesSingleView />
             </div>
-            <div className="row">
-              <SunriseAndZawwal />
-            </div>
+            <div className="row">{/* <SunriseAndZawwal /> */}</div>
             <div className="row">
               <JummahTimes />
             </div>
