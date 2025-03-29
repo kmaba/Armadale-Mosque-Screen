@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 .PrayerTimesWidget {
   font-size: 1em;
   text-align: center;
   color: #0b0c0c;
   width: 850px;
+  background: rgba(9, 116, 139, 0.23);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.6px);
+  -webkit-backdrop-filter: blur(5.6px);
+  border: 1px solid rgba(9, 116, 139, 1);
 }
 
 .PrayerTimesWidget th {

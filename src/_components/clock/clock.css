@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 .ClockWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background-color: white;
+  background: rgba(9, 116, 139, 0.23);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.6px);
+  -webkit-backdrop-filter: blur(5.6px);
+  border: 1px solid rgba(9, 116, 139, 1);
   font-weight: 900;
-  border-radius: 25px;
   padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 39rem; /* Set the width */
   overflow: hidden; /* Hide any content that exceeds the div size */
 }

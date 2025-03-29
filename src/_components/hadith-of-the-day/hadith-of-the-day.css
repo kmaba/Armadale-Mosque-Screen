@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 .HadithOfTheDayWrapper {
   max-width: 70%;
   text-align: center;
@@ -8,6 +10,12 @@
   margin-top: 100px;
   border-radius: 5%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background: rgba(9, 116, 139, 0.23);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.6px);
+  -webkit-backdrop-filter: blur(5.6px);
+  border: 1px solid rgba(9, 116, 139, 1);
 }
 
 .Hadith {

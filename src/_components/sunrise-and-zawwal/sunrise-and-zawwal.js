@@ -66,6 +66,10 @@ class SunriseAndZawwal extends Component {
               <th>Sunrise:</th>
               <td>{this.state.sunrise}</td>
             </tr>
+            <tr>
+              <th>Zawwal:</th>
+              <td>{this.state.zawwal}</td>
+            </tr>
           </thead>
         </table>
       </div>

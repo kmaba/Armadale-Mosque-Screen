@@ -9,6 +9,7 @@ import JummahTimes from '../../_components/jummah-times/jummah-times';
 import AdditionalMessage from '../../_components/additional-message/additional-message';
 import AppConfig from '../../_components/app-config/app-config';
 import Branding from '../../_components/branding/branding';
+import SunriseAndZawwal from '../../_components/sunrise-and-zawwal/sunrise-and-zawwal';
 
 class View2 extends Component {
   constructor(props) {
@@ -52,6 +53,9 @@ class View2 extends Component {
             </div>
             <div className="row">
               <JummahTimes />
+            </div>
+            <div className="row">
+              <SunriseAndZawwal />
             </div>
           </div>
         </div>
