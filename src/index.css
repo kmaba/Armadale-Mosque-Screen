@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 body {
   max-width: 100%;
   padding: 20px;
   padding-top: 0px;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background: linear-gradient(to right, #31669b 50%, #254d75 50%);
   color: #fff;
 }

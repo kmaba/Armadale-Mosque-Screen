@@ -52,7 +52,9 @@ class View1 extends Component {
             <div className="row">
               <JummahTimes />
             </div>
-            <div className="row">{/* <SunriseAndZawwal /> */}</div>
+            <div className="row">
+              <SunriseAndZawwal />
+            </div>
           </div>
         </div>
         <BuildNumber />
