@@ -1,12 +1,18 @@
 .slide {
-  transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: filter 0.35s ease-in-out, transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
   filter: blur(0); /* Initial state - no blur */
   transform: scale(1); /* Initial state - no zoom */
+  opacity: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  backdrop-filter: saturate(1.05);
 }
 
 .slide.blur {
   filter: blur(7px); /* Apply Gaussian blur */
-  transform: scale(1.01); /* Zoom in by 10% */
+  transform: scale(1.012); /* subtle zoom effect */
+  opacity: 0.95;
 }
 
 ::-webkit-scrollbar {

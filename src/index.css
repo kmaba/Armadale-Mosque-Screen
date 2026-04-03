@@ -1,12 +1,16 @@
 body {
   max-width: 100%;
-  padding: 20px;
-  padding-top: 0px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 16px 20px 20px;
   font-family: 'PT Sans', sans-serif;
-  background: linear-gradient(to right, #31669b 50%, #254d75 50%);
+  background: radial-gradient(circle at top, #3d78b3 0%, #2e6297 45%, #204a72 100%);
   color: #fff;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
 }
 
 h1 {
   font-size: 50px;
+  margin-top: 0;
 }
